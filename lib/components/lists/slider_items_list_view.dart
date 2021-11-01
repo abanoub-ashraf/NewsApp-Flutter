@@ -1,7 +1,7 @@
-import 'package:api_fetch/components/cards/slider_item_card.dart';
+import '../cards/slider_item_card.dart';
 import 'package:flutter/material.dart';
 
-import 'package:api_fetch/models/slider_items_model.dart';
+import '../../models/slider_items_model.dart';
 import 'package:flutter/rendering.dart';
 
 class SliderItemsList extends StatefulWidget {

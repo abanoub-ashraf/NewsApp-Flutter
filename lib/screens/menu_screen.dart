@@ -1,7 +1,7 @@
-import 'package:api_fetch/components/lists/menu_list_view.dart';
-import 'package:api_fetch/models/menu_model.dart';
-import 'package:api_fetch/services/web_services.dart';
-import 'package:api_fetch/utils/app_strings.dart';
+import '../components/lists/menu_list_view.dart';
+import '../models/menu_model.dart';
+import '../services/web_services.dart';
+import '../utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class MenuScreen extends StatefulWidget {

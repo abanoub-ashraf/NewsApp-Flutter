@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:api_fetch/models/boxes_model.dart';
+import '../models/boxes_model.dart';
 import 'package:http/http.dart' as http;
 
 import '../models/menu_model.dart';

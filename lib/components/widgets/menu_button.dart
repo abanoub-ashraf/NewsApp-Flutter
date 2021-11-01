@@ -1,4 +1,4 @@
-import 'package:api_fetch/screens/menu_screen.dart';
+import '../../screens/menu_screen.dart';
 import 'package:flutter/material.dart';
 
 class MenuButton extends StatelessWidget {
@@ -13,7 +13,7 @@ class MenuButton extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 margin: EdgeInsets.only(
                     left: MediaQuery.of(context).size.width * 0.03, 
-                    top: MediaQuery.of(context).size.height * 0.02, 
+                    top: MediaQuery.of(context).size.height * 0.03, 
                 ),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,

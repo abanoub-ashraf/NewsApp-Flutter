@@ -1,5 +1,5 @@
-import 'package:api_fetch/models/slider_items_model.dart';
-import 'package:api_fetch/utils/app_strings.dart';
+import '../../models/slider_items_model.dart';
+import '../../utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class SliderItemCard extends StatelessWidget {

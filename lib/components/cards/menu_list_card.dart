@@ -1,4 +1,4 @@
-import 'package:api_fetch/models/menu_model.dart';
+import '../../models/menu_model.dart';
 import 'package:flutter/material.dart';
 
 class MenuListCard extends StatelessWidget {

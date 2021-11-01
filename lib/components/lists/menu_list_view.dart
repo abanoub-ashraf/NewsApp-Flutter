@@ -1,6 +1,6 @@
-import 'package:api_fetch/components/cards/menu_list_card.dart';
+import '../cards/menu_list_card.dart';
 import 'package:flutter/material.dart';
-import 'package:api_fetch/models/menu_model.dart';
+import '../../models/menu_model.dart';
 
 class MenuList extends StatefulWidget {
     final List<MenuModel>? menuData;

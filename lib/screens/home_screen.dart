@@ -1,9 +1,9 @@
-import 'package:api_fetch/components/lists/boxes_list_view.dart';
-import 'package:api_fetch/components/lists/slider_items_list_view.dart';
-import 'package:api_fetch/components/widgets/menu_button.dart';
-import 'package:api_fetch/models/boxes_model.dart';
-import 'package:api_fetch/models/slider_items_model.dart';
-import 'package:api_fetch/services/web_services.dart';
+import '../components/lists/boxes_list_view.dart';
+import '../components/lists/slider_items_list_view.dart';
+import '../components/widgets/menu_button.dart';
+import '../models/boxes_model.dart';
+import '../models/slider_items_model.dart';
+import '../services/web_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 

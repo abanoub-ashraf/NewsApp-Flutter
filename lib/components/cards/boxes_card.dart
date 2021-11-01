@@ -1,5 +1,5 @@
-import 'package:api_fetch/models/boxes_model.dart';
-import 'package:api_fetch/utils/app_strings.dart';
+import '../../models/boxes_model.dart';
+import '../../utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class BoxesCard extends StatelessWidget {
@@ -41,7 +41,7 @@ class BoxesCard extends StatelessWidget {
                             ),
                             Container(
                                 height: constraints.maxHeight * 0.4,
-                                padding: const EdgeInsets.symmetric(horizontal: 20),
+                                padding: const EdgeInsets.symmetric(horizontal: 10),
                                 child: Column(
                                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                                     children: [
@@ -55,23 +55,28 @@ class BoxesCard extends StatelessWidget {
                                                 fontWeight: FontWeight.bold,
                                             ),
                                         ),
-                                        Text(
-                                            box.dateorder.toString(),
-                                            textAlign: TextAlign.center,
-                                            maxLines: 2,
-                                            style: TextStyle(
-                                                color: Colors.blueGrey.shade700,
-                                                fontSize: 14,
-                                            ),
-                                        ),
-                                        Text(
-                                            box.since.toString(),
-                                            textAlign: TextAlign.center,
-                                            maxLines: 2,
-                                            style: TextStyle(
-                                                color: Colors.blueGrey.shade700,
-                                                fontSize: 14,
-                                            ),
+                                        Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                            children: [
+                                                Text(
+                                                    box.dateorder.toString(),
+                                                    textAlign: TextAlign.center,
+                                                    maxLines: 2,
+                                                    style: TextStyle(
+                                                        color: Colors.blueGrey.shade700,
+                                                        fontSize: 14,
+                                                    ),
+                                                ),
+                                                Text(
+                                                    box.since.toString(),
+                                                    textAlign: TextAlign.center,
+                                                    maxLines: 2,
+                                                    style: TextStyle(
+                                                        color: Colors.blueGrey.shade700,
+                                                        fontSize: 14,
+                                                    ),
+                                                ),
+                                            ],
                                         ),
                                     ],
                                 ),

@@ -1,5 +1,5 @@
-import 'package:api_fetch/components/cards/boxes_card.dart';
-import 'package:api_fetch/models/boxes_model.dart';
+import '../cards/boxes_card.dart';
+import '../../models/boxes_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
