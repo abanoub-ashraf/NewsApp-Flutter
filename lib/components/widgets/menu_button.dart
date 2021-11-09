@@ -10,9 +10,9 @@ class MenuButton extends StatelessWidget {
             child: Container(
                 height: 40,
                 width: 40,
-                alignment: Alignment.topLeft,
+                // alignment: Alignment.topLeft,
                 margin: EdgeInsets.only(
-                    left: MediaQuery.of(context).size.width * 0.03, 
+                    left: MediaQuery.of(context).size.width * 0.85, 
                     top: MediaQuery.of(context).size.height * 0.03, 
                 ),
                 decoration: BoxDecoration(

@@ -19,6 +19,7 @@ class _BoxesListState extends State<BoxesList> {
     @override
     Widget build(BuildContext context) {
         return PageView.builder(
+            reverse: true,
             controller: PageController(
                 initialPage: 0,
                 viewportFraction: 0.8,
