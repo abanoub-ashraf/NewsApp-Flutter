@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
             menu: const MenuScreen(),
             inverse: true,
             type: SideMenuType.shrikNRotate,
-            background: Colors.white,
+            background: const Color.fromRGBO(230, 57, 70, 1),
             radius: const BorderRadius.all(
                 Radius.circular(40),
             ),

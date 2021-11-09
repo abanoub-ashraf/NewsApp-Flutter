@@ -13,10 +13,8 @@ class MenuListCard extends StatelessWidget {
     Widget build(BuildContext context) {
         return SizedBox(
             width: MediaQuery.of(context).size.width,
-            child: Card(
-                elevation: 3,
+            child: Container(
                 margin: const EdgeInsets.all(8),
-                color: Colors.grey.shade200,
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -27,7 +25,8 @@ class MenuListCard extends StatelessWidget {
                                 menuItem.name.toString(),
                                 style: const TextStyle(
                                     color: Colors.black54,
-                                    fontSize: 17,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
                                 ),
                             ),
                         ),
