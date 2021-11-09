@@ -34,26 +34,9 @@ class _MenuScreenState extends State<MenuScreen> {
                     child: Column(
                         children: [
                             Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                    InkWell(
-                                        onTap: () {
-                                            Navigator.of(context).pop();
-                                        },
-                                        child: Container(
-                                            decoration: const BoxDecoration(
-                                                color: Colors.black45,
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(2),
-                                                ),
-                                            ),
-                                            child: const Icon(
-                                                Icons.close, 
-                                                size: 25,
-                                            ),
-                                        ),
-                                    ),
-                                    const Text(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: const [
+                                    Text(
                                         'القائمه الرئيسيه',
                                         style: TextStyle(
                                             fontSize: 20,
@@ -69,25 +52,28 @@ class _MenuScreenState extends State<MenuScreen> {
                                     ),
                                 ]
                             ),
+                            const SizedBox(
+                                height: 20,
+                            ),
                             Expanded(
-                              child: FutureBuilder<List<MenuModel>>(
-                                  future: futureMenuData,
-                                  builder: (context, snapshot) {
-                                      if (snapshot.hasData) {
-                                          List<MenuModel> data = snapshot.data ?? [];
-                                          return MenuList(
-                                                  menuData: data,
-                                              );
-                                      } else if (snapshot.hasError) {
-                                          return Text('${snapshot.error}');
-                                      }
-                                      return Center(
-                                          child: Image.asset(
-                                              AppStrings.loadingImageString,
-                                          ),
-                                      );
-                                  },
-                              ),
+                                child: FutureBuilder<List<MenuModel>>(
+                                    future: futureMenuData,
+                                    builder: (context, snapshot) {
+                                        if (snapshot.hasData) {
+                                            List<MenuModel> data = snapshot.data ?? [];
+                                            return MenuList(
+                                                    menuData: data,
+                                                );
+                                        } else if (snapshot.hasError) {
+                                            return Text('${snapshot.error}');
+                                        }
+                                        return Center(
+                                            child: Image.asset(
+                                                AppStrings.loadingImageString,
+                                            ),
+                                        );
+                                    },
+                                ),
                             ),
                         ],
                     ),

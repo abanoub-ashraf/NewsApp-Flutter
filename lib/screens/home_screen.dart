@@ -1,3 +1,6 @@
+import 'package:api_fetch/screens/menu_screen.dart';
+import 'package:shrink_sidemenu/shrink_sidemenu.dart';
+
 import '../components/lists/boxes_list_view.dart';
 import '../components/lists/slider_items_list_view.dart';
 import '../components/widgets/menu_button.dart';
@@ -47,79 +50,96 @@ class _HomeScreenState extends State<HomeScreen> {
     
     @override
     Widget build(BuildContext context) {
-        return Scaffold(
-            backgroundColor: Colors.grey.shade300,
-            body: SingleChildScrollView(
-                child: Column(
-                    children: [
-                        FutureBuilder<List<SliderItemsModel>>(
-                            future: futureSliderItemsData,
-                            builder: (context, snapshot) {
-                                if (snapshot.hasData) {
-                                    List<SliderItemsModel> data = snapshot.data!;
-                                    return Stack(
-                                        children: [
-                                            SizedBox(
-                                                height: MediaQuery.of(context).size.height * 0.4,
-                                                width: MediaQuery.of(context).size.width,
-                                                child: SliderItemsList(
-                                                    sliderItemsData: data,
+        final GlobalKey<SideMenuState> _sideMenuKey = GlobalKey<SideMenuState>();
+
+        return SideMenu(
+            key: _sideMenuKey,
+            maxMenuWidth: MediaQuery.of(context).size.width * 0.7,
+            closeIcon: const Icon(
+                Icons.close, 
+                size: 25,
+            ),
+            menu: const MenuScreen(),
+            inverse: true,
+            type: SideMenuType.shrikNRotate,
+            background: Colors.white,
+            radius: const BorderRadius.all(
+                Radius.circular(40),
+            ),
+            child: Scaffold(
+                backgroundColor: Colors.grey.shade300,
+                body: SingleChildScrollView(
+                    child: Column(
+                        children: [
+                            FutureBuilder<List<SliderItemsModel>>(
+                                future: futureSliderItemsData,
+                                builder: (context, snapshot) {
+                                    if (snapshot.hasData) {
+                                        List<SliderItemsModel> data = snapshot.data!;
+                                        return Stack(
+                                            children: [
+                                                SizedBox(
+                                                    height: MediaQuery.of(context).size.height * 0.4,
+                                                    width: MediaQuery.of(context).size.width,
+                                                    child: SliderItemsList(
+                                                        sliderItemsData: data,
+                                                    ),
                                                 ),
-                                            ),
-                                            const MenuButton(),
-                                        ],
-                                    );
-                                } else if (snapshot.hasError) {
-                                    return Text('${snapshot.error}');
-                                }
-                                return Container();
-                            },
-                        ),
-                        const SizedBox(
-                            height: 10,
-                        ),
-                        FutureBuilder<List<BoxesModel>>(
-                            future: futureBoxesData,
-                            builder: (context, snapshot) {
-                                if (snapshot.hasData) {
-                                    List<BoxesModel> data = snapshot.data!;
-                                    return Column(
-                                        children: [
-                                            Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 12,
-                                                    left: 20,
-                                                    right: 25,
-                                                    bottom: 12,
+                                                MenuButton(sideMenuKey: _sideMenuKey,),
+                                            ],
+                                        );
+                                    } else if (snapshot.hasError) {
+                                        return Text('${snapshot.error}');
+                                    }
+                                    return Container();
+                                },
+                            ),
+                            const SizedBox(
+                                height: 10,
+                            ),
+                            FutureBuilder<List<BoxesModel>>(
+                                future: futureBoxesData,
+                                builder: (context, snapshot) {
+                                    if (snapshot.hasData) {
+                                        List<BoxesModel> data = snapshot.data!;
+                                        return Column(
+                                            children: [
+                                                Padding(
+                                                    padding: const EdgeInsets.only(
+                                                        top: 12,
+                                                        left: 20,
+                                                        right: 25,
+                                                        bottom: 12,
+                                                    ),
+                                                    child: Row(
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        children: [
+                                                            buildTextWidget('مشاهده الكل'),
+                                                            buildTextWidget('آحدث الآخبار'),
+                                                        ],
+                                                    ),
                                                 ),
-                                                child: Row(
-                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                    children: [
-                                                        buildTextWidget('مشاهده الكل'),
-                                                        buildTextWidget('آحدث الآخبار'),
-                                                    ],
+                                                const SizedBox(
+                                                    height: 10,
                                                 ),
-                                            ),
-                                            const SizedBox(
-                                                height: 10,
-                                            ),
-                                            SizedBox(
-                                                height: MediaQuery.of(context).size.height * 0.4,
-                                                width: MediaQuery.of(context).size.width, 
-                                                child: BoxesList(boxesData: data,),
-                                            ),
-                                        ],
-                                    );
-                                } else if (snapshot.hasError) {
-                                    return Text('${snapshot.error}');
-                                }
-                                return Container();
-                            },
-                        ),
-                        const SizedBox(
-                            height: 30,
-                        ),
-                    ],
+                                                SizedBox(
+                                                    height: MediaQuery.of(context).size.height * 0.4,
+                                                    width: MediaQuery.of(context).size.width, 
+                                                    child: BoxesList(boxesData: data,),
+                                                ),
+                                            ],
+                                        );
+                                    } else if (snapshot.hasError) {
+                                        return Text('${snapshot.error}');
+                                    }
+                                    return Container();
+                                },
+                            ),
+                            const SizedBox(
+                                height: 30,
+                            ),
+                        ],
+                    ),
                 ),
             ),
         );

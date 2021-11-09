@@ -1,8 +1,14 @@
-import '../../screens/menu_screen.dart';
+import 'package:shrink_sidemenu/shrink_sidemenu.dart';
+
 import 'package:flutter/material.dart';
 
 class MenuButton extends StatelessWidget {
-    const MenuButton({ Key? key }) : super(key: key);
+    final GlobalKey<SideMenuState> sideMenuKey;
+
+    const MenuButton({ 
+        Key? key,
+        required this.sideMenuKey
+    }) : super(key: key);
 
     @override
     Widget build(BuildContext context) {
@@ -23,13 +29,20 @@ class MenuButton extends StatelessWidget {
                 ),
                 child: InkWell(
                     onTap: () {
-                        Navigator.push(
-                            context, 
-                            MaterialPageRoute(
-                                builder: (_) => const MenuScreen(),
-                                fullscreenDialog: true,
-                            ),
-                        );
+                        // Navigator.push(
+                        //     context, 
+                        //     MaterialPageRoute(
+                        //         builder: (_) => const MenuScreen(),
+                        //         fullscreenDialog: true,
+                        //     ),
+                        // );
+                        final _state = sideMenuKey.currentState;
+                        
+                        if (_state!.isOpened) {
+                            _state.closeSideMenu(); // close side menu
+                        } else {
+                            _state.openSideMenu();// open side menu
+                        }
                     },
                     child: const CircleAvatar(
                         child: Icon(
