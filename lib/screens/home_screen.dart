@@ -1,4 +1,10 @@
+import 'package:api_fetch/screens/background_notifications_screen.dart';
 import 'package:api_fetch/screens/menu_screen.dart';
+import 'package:api_fetch/screens/foreground_notifications_screen.dart';
+import 'package:api_fetch/services/local_notification_service.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:print_color/print_color.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 
 import '../components/lists/boxes_list_view.dart';
@@ -46,6 +52,42 @@ class _HomeScreenState extends State<HomeScreen> {
 
         futureSliderItemsData   = _webServices.fetchSliderItems();
         futureBoxesData         = _webServices.fetchBoxes();
+
+        handleNotifications();
+    }
+
+    void handleNotifications() async {
+        LocalNotificationService.initializeLocalNotificationsPlugin(context);
+
+        await Firebase.initializeApp();
+
+        FirebaseMessaging.instance.getToken().then((token) {
+            Print.yellow('Current Device Token: $token');
+        });
+
+        RemoteMessage? initialMessage = await FirebaseMessaging.instance.getInitialMessage();
+
+        if (initialMessage != null) {
+            Navigator.of(context).pushNamed(initialMessage.data['route']);
+        }
+
+        FirebaseMessaging.onMessage.listen((notification) {
+            if (notification.notification != null) {
+                Print.cyan('foreground notification.....');
+
+                LocalNotificationService.showNotification(notification);
+            }
+        });
+
+        FirebaseMessaging.onMessageOpenedApp.listen((notification) {
+            Print.cyan('background notification.....');
+            
+            print(notification.data['route']);
+            
+            if (notification != null) {
+                Navigator.of(context).pushNamed(notification.data['route']);
+            }
+        });
     }
     
     @override

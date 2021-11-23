@@ -1,3 +1,6 @@
+import 'package:api_fetch/screens/background_notifications_screen.dart';
+import 'package:api_fetch/screens/foreground_notifications_screen.dart';
+import 'package:api_fetch/screens/terminated_notification_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/home_screen.dart';
@@ -20,6 +23,11 @@ class _AppWidgetState extends State<AppWidget> {
                 ),
             ),
             home: const HomeScreen(),
+            routes: {
+                'foreground': (_) => const ForegroundNotificationsScreen(),
+                'background': (_) => const BackgroundNotificationsScreen(),
+                'terminated': (_) => const TerminatedNotificationsScreen(),
+            },
         );
     }
 }

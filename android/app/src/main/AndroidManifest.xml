@@ -27,6 +27,19 @@
               android:name="io.flutter.embedding.android.SplashScreenDrawable"
               android:resource="@drawable/launch_background"
               />
+
+            <!-- this is necessery for displaying a head notification on the screen -->
+            <meta-data
+              android:name="com.google.firebase.messaging.default_notification_channel_id"
+              android:value="test"
+              />
+
+            <!--  -->
+            <intent-filter>
+                <action android:name="FLUTTER_NOTIFICATION_CLICK"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -37,5 +50,9 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+        <meta-data
+          android:name="com.google.firebase.messaging.default_notification_channel_id"
+          android:value="test" />
     </application>
 </manifest>
